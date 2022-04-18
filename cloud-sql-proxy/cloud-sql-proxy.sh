@@ -307,6 +307,9 @@ EOF
 }
 
 function configure_sql_client() {
+  if [ ! -d "/etc/mysql/conf.d"]; then
+    mkdir -p /etc/mysql/conf.d
+  fi
   # Configure MySQL client to talk to metastore
   cat <<EOF >/etc/mysql/conf.d/cloud-sql-proxy.cnf
 [client]
